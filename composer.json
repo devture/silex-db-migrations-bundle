@@ -1,0 +1,23 @@
+{
+	"name": "devture/silex-db-migrations-bundle",
+	"description": "Silex bundle that provides DB migrations (powered by Phinx)",
+	"authors": [
+		{
+			"name": "Lyubomir Popov",
+			"email": "lyubo@lpopov.net"
+		},
+		{
+			"name": "Slavi Pantaleev",
+			"email": "s.pantaleev@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0",
+		"robmorgan/phinx": "0.4.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Devture\\Bundle\\DbMigrationsBundle\\": "src/"
+		}
+	}
+}
