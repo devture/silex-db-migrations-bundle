@@ -1,6 +1,8 @@
 <?php
 namespace Devture\Bundle\DbMigrationsBundle\ConsoleCommand;
 
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 use Phinx\Console\Command\Status as PhinxStatus;
 use Devture\Bundle\DbMigrationsBundle\Config\Config;
 
@@ -14,7 +16,7 @@ class Status extends PhinxStatus {
 		$this->configOptions = $configOptions;
 	}
 
-	protected function loadConfig($input, $output) {
+	protected function loadConfig(InputInterface $input, OutputInterface $output) {
 		$config = Config::loadConfig($this->configOptions);
 
 		$this->setConfig($config);
