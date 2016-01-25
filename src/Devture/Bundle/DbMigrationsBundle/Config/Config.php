@@ -28,6 +28,12 @@ class Config extends PhinxConfig {
 				continue;
 			}
 
+			//If no URI is specified for an environment, consider that environment disabled.
+			if ($configArr['environments'][$environment]['uri'] === null) {
+				unset($configArr['environments'][$environment]);
+				continue;
+			}
+
 			$matches = null;
 			if (!preg_match('/^([^:]+):([^@]+)@([^\/]+)\/(.+?)$/', $configArr['environments'][$environment]['uri'], $matches)) {
 				throw new \Exception('Cannot parse database URI.');
