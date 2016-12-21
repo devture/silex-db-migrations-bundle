@@ -1,6 +1,9 @@
 {
 	"name": "devture/silex-db-migrations-bundle",
+	"type": "library",
 	"description": "Silex bundle that provides DB migrations (powered by Phinx)",
+	"keywords": ["silex", "bundle", "database", "migrations", "phinx"],
+	"license": "BSD",
 	"authors": [
 		{
 			"name": "Lyubomir Popov",
