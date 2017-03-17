@@ -1,10 +1,7 @@
 <?php
 namespace Devture\Bundle\DbMigrationsBundle;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
-
-class ServicesProvider implements ServiceProviderInterface {
+class ServicesProvider implements \Pimple\ServiceProviderInterface, \Silex\Api\BootableProviderInterface {
 
 	private $config;
 
@@ -12,31 +9,31 @@ class ServicesProvider implements ServiceProviderInterface {
 		$this->config = $config;
 	}
 
-	public function register(Application $app) {
+	public function register(\Pimple\Container $container) {
 		$config = $this->config;
 
-		$app['devture_db_migration.console_command.create'] = function () use ($config) {
+		$container['devture_db_migration.console_command.create'] = function () use ($config) {
 			return new ConsoleCommand\Create(null, $config);
 		};
 
-		$app['devture_db_migration.console_command.migrate'] = function () use ($config) {
+		$container['devture_db_migration.console_command.migrate'] = function () use ($config) {
 			return new ConsoleCommand\Migrate(null, $config);
 		};
 
-		$app['devture_db_migration.console_command.rollback'] = function () use ($config) {
+		$container['devture_db_migration.console_command.rollback'] = function () use ($config) {
 			return new ConsoleCommand\Rollback(null, $config);
 		};
 
-		$app['devture_db_migration.console_command.status'] = function () use ($config) {
+		$container['devture_db_migration.console_command.status'] = function () use ($config) {
 			return new ConsoleCommand\Status(null, $config);
 		};
 
-		$app['devture_db_migration.console_command.test'] = function () use ($config) {
+		$container['devture_db_migration.console_command.test'] = function () use ($config) {
 			return new ConsoleCommand\Test(null, $config);
 		};
 	}
 
-	public function boot(Application $app) {
+	public function boot(\Silex\Application $app) {
 		if (isset($app['console'])) {
 			$app['console']->add($app['devture_db_migration.console_command.create']);
 			$app['console']->add($app['devture_db_migration.console_command.migrate']);
