@@ -40,8 +40,15 @@ class Config extends PhinxConfig {
 			}
 			list ($_fullMatch, $dbUsername, $dbPassword, $dbHost, $dbName) = $matches;
 
+			$dbPort = 3306;
+			if (preg_match('/^([^:]+):(\d+)$/', $dbHost, $dbHostMatches)) {
+				$dbHost = $dbHostMatches[1];
+				$dbPort = (int) $dbHostMatches[2];
+			}
+
 			$configArr['environments'][$environment]['name'] = $dbName;
 			$configArr['environments'][$environment]['host'] = $dbHost;
+			$configArr['environments'][$environment]['port'] = $dbPort;
 			$configArr['environments'][$environment]['user'] = $dbUsername;
 			$configArr['environments'][$environment]['pass'] = $dbPassword;
 
