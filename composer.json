@@ -15,7 +15,7 @@
 		}
 	],
 	"require": {
-		"robmorgan/phinx": "0.8.*",
+		"robmorgan/phinx": ">=0.8.0,<0.10",
 		"silex/silex": "^2.0"
 	},
 	"autoload": {
