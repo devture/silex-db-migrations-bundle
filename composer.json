@@ -11,11 +11,11 @@
 		},
 		{
 			"name": "Slavi Pantaleev",
-			"email": "s.pantaleev@gmail.com"
+			"email": "slavi@devture.com"
 		}
 	],
 	"require": {
-		"robmorgan/phinx": "0.6.*"
+		"robmorgan/phinx": "<=0.12"
 	},
 	"autoload": {
 		"psr-0": {
